@@ -56,5 +56,6 @@ OUTPUT.mkdir()
 for path in public_code:
     shutil.copy2(path, OUTPUT / path.name)
 shutil.copytree(ROOT / 'assets', OUTPUT / 'assets')
+shutil.copy2(ROOT / 'favicon.ico', OUTPUT / 'favicon.ico')
 (OUTPUT / '.nojekyll').touch()
 print(f'Validated {len(pages)} pages; packaged {len(list(OUTPUT.rglob("*")))} entries in _site.')

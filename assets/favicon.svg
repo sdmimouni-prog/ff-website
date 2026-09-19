@@ -1,1 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#f4f0ea"/><text x="32" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="40" fill="#211f1b">F</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>FF — Farah El Fassi</title>
+  <rect width="64" height="64" rx="12" fill="#141310"/>
+  <polygon points="10,15 30,15 30,24 28.5,24 27.5,17.5 18,17.5 18,30 25.5,30 26.5,26 28,26 28,36.5 26.5,36.5 25.5,32.5 18,32.5 18,46.5 22,47.5 22,49 10,49 10,47.5 13.5,46.5 13.5,17.5 10,16.5" fill="#f1ece5"/>
+  <polygon points="10,15 30,15 30,24 28.5,24 27.5,17.5 18,17.5 18,30 25.5,30 26.5,26 28,26 28,36.5 26.5,36.5 25.5,32.5 18,32.5 18,46.5 22,47.5 22,49 10,49 10,47.5 13.5,46.5 13.5,17.5 10,16.5" transform="translate(24 0)" fill="#d0bda5"/>
+</svg>
