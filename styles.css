@@ -77,21 +77,21 @@ html[lang="ar"] .site-header, html[lang="ar"] .site-footer { --sans: Tahoma, Ari
 .menu-toggle { display: none; }
 
 /* 02 — Hero / 399 reference pixels. Text remains real HTML. */
-.hero { position: relative; height: calc(399 * var(--u)); isolation: isolate; overflow: hidden; background: #d6c9b9; }
-/* The original portrait is framed in CSS; the warm fades keep the approved text layout. */
-.hero-background { position: absolute; inset: 0 auto 0 35%; width: 60%; max-width: none; height: 100%; object-fit: cover; object-position: 50% 54%; mask-image: linear-gradient(90deg,transparent,black 12%,black 88%,transparent); z-index: -2; }
-.hero::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg,#d6c9b9 0%,#d6c9b9 30%,#d6c9b9e6 36%,#d6c9b900 49%,#d6c9b900 70%,#d6c9b9e6 81%,#d6c9b9 89%); }
+.hero { position: relative; height: calc(399 * var(--u)); isolation: isolate; overflow: hidden; background: #e4e3e0; }
+/* Neutral fades frame the monochrome portrait without covering the face. */
+.hero-background { position: absolute; inset: 0 auto 0 35%; width: 44%; max-width: none; height: 100%; object-fit: cover; object-position: 50% 0%; filter: grayscale(1); mask-image: linear-gradient(90deg,transparent,black 14%,black 84%,transparent); z-index: -2; }
+.hero::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg,#e4e3e0 0%,#e4e3e0 33%,#e4e3e0a6 40%,#e4e3e000 49%,#e4e3e000 71%,#e4e3e0a6 79%,#e4e3e0 87%); }
 .hero-copy { position: absolute; left: calc(81 * var(--u)); top: calc(65 * var(--u)); }
-.hero-eyebrow { font-size: calc(9 * var(--u)); line-height: 1.7; letter-spacing: calc(3.1 * var(--u)); color: #3b3731; }
+.hero-eyebrow { font-size: calc(9 * var(--u)); line-height: 1.7; letter-spacing: calc(3.1 * var(--u)); color: #41413e; }
 .hero h1 { margin-top: calc(18 * var(--u)); font-size: calc(79 * var(--u)); line-height: .795; letter-spacing: calc(-5.1 * var(--u)); color: #070705; }
 .hero h1 span { display: block; }
 .hero-signature { position: absolute; width: calc(217 * var(--u)); height: auto; left: calc(-2 * var(--u)); top: calc(175 * var(--u)); }
 .hero-button { position: absolute; top: calc(265 * var(--u)); left: calc(1 * var(--u)); width: calc(182 * var(--u)); min-height: calc(32 * var(--u)); background: #faf9f710; font-size: calc(7.5 * var(--u)); letter-spacing: calc(1.05 * var(--u)); }
-.hero-quote { position: absolute; top: calc(90 * var(--u)); left: calc(800 * var(--u)); width: calc(188 * var(--u)); font-family: var(--serif); font-size: calc(18 * var(--u)); font-style: italic; line-height: 1.2; color: #39332b; }
-.hero-quote::before { content: '“'; position: absolute; top: calc(-9 * var(--u)); left: calc(-16 * var(--u)); font-size: calc(37 * var(--u)); color: #ab927a; font-style: normal; }
+.hero-quote { position: absolute; top: calc(90 * var(--u)); left: calc(800 * var(--u)); width: calc(188 * var(--u)); font-family: var(--serif); font-size: calc(18 * var(--u)); font-style: italic; line-height: 1.2; color: #393a37; }
+.hero-quote::before { content: '“'; position: absolute; top: calc(-9 * var(--u)); left: calc(-16 * var(--u)); font-size: calc(37 * var(--u)); color: #898a84; font-style: normal; }
 .hero-quote p::after { content: ' ”'; }
 .quote-line { display: block; width: calc(24 * var(--u)); height: 1px; margin-top: calc(25 * var(--u)); background: #554b3e; }
-.hero-disciplines { position: absolute; right: calc(57 * var(--u)); bottom: calc(27 * var(--u)); font-size: calc(7.6 * var(--u)); line-height: 1.8; letter-spacing: calc(1.7 * var(--u)); color: #3c352d; }
+.hero-disciplines { position: absolute; right: calc(57 * var(--u)); bottom: calc(27 * var(--u)); font-size: calc(7.6 * var(--u)); line-height: 1.8; letter-spacing: calc(1.7 * var(--u)); color: #41413e; }
 
 /* 03 — Biography / 298 reference pixels */
 .about { height: calc(298 * var(--u)); display: grid; grid-template-columns: 32.86% 24.9% 18.55% 23.69%; background: var(--paper); border-top: 1px solid #fff; }
@@ -101,7 +101,8 @@ html[lang="ar"] .site-header, html[lang="ar"] .site-footer { --sans: Tahoma, Ari
 .about-description strong { color: #1c1917; font-weight: 500; }
 .about-copy .outline-button { margin-top: calc(12 * var(--u)); min-width: calc(136 * var(--u)); }
 .about-portrait, .about-smile { width: 100%; height: 100%; object-fit: cover; }
-.about-portrait { object-position: center; }
+.about-portrait { overflow: hidden; }
+.about-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; transform: scale(1.5); transform-origin: 50% 65%; }
 .about-pillars { display: flex; flex-direction: column; justify-content: space-between; padding: calc(25 * var(--u)) calc(16 * var(--u)) calc(18 * var(--u)) calc(32 * var(--u)); background: linear-gradient(115deg,#f4efe8,#eee9e2); }
 .pillar .icon { width: calc(20 * var(--u)); height: calc(20 * var(--u)); margin-bottom: calc(5 * var(--u)); color: var(--accent); stroke-width: 1.3; }
 .pillar p { display: grid; gap: calc(1 * var(--u)); }
@@ -256,8 +257,8 @@ dialog::backdrop { background: #141310bb; backdrop-filter: blur(7px); }
   .main-nav a, .main-nav > button { font-size: 16px; text-align: left; padding: 12px 0; }
   .main-nav a::after, .main-nav > button::after { right: auto; width: 25px; }
   .hero { height: 710px; }
-  .hero-background { width: max(100%, 470px); left: 50%; translate: -50% 0; object-position: 50% 80%; height: 550px; mask-image: none; }
-  .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg,#e6ddd1 0%,#e6ddd1 34%,#e6ddd1f2 44%,#e6ddd180 55%,#e6ddd100 72%); }
+  .hero-background { width: min(100%, 560px); left: 50%; translate: -50% 0; object-position: 50% 0%; height: 550px; mask-image: linear-gradient(90deg,transparent,black 5%,black 95%,transparent); }
+  .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg,#e4e3e0 0%,#e4e3e0 29%,#e4e3e0f2 40%,#e4e3e080 51%,#e4e3e000 67%); }
   .hero-copy { left: 34px; top: auto; bottom: 40px; width: calc(100% - 68px); }
   .hero-eyebrow { font-size: 9px; line-height: 1.7; letter-spacing: 2.6px; }
   .hero h1 { font-size: 78px; line-height: .84; letter-spacing: -4px; margin-top: 18px; }
@@ -349,7 +350,7 @@ dialog::backdrop { background: #141310bb; backdrop-filter: blur(7px); }
   .header-tools { gap: 4px; }
   .main-nav { top: 66px; }
   .hero { height: 690px; }
-  .hero-background { height: 530px; }
+  .hero-background { height: 530px; mask-image: none; }
   .hero-copy { left: 26px; width: calc(100% - 52px); bottom: 30px; }
   .hero h1 { font-size: 72px; letter-spacing: -4px; }
   .hero-disciplines { display: none; }
@@ -431,7 +432,7 @@ html[lang="ar"] .outline-button [data-i18n] { font-size: 1.05em; }
 @media (min-width:861px) {
   .site-header > .brand { font-size: calc(22 * var(--u)); }
   .hero h1 { transform: scaleX(.83); transform-origin: top left; width: max-content; }
-  .hero-quote { left: calc(798 * var(--u)); width: calc(220 * var(--u)); transform: scaleX(.86); transform-origin: top left; white-space: nowrap; font-size: calc(18 * var(--u)); }
+  .hero-quote { left: auto; right: calc(39 * var(--u)); width: calc(154 * var(--u)); font-size: calc(18 * var(--u)); line-height: 1.3; }
   .about { grid-template-columns: 32.86% 26.51% 16.94% 23.69%; }
   .about-description { font-size: calc(10.2 * var(--u)); max-width: calc(265 * var(--u)); line-height: 1.76; }
   .about-pillars { padding-left: calc(32 * var(--u)); }
@@ -662,7 +663,6 @@ html[lang="ar"] .outline-button [data-i18n] { font-size: 1.05em; }
 }
 
 /* Site audit: real supplied portraits. */
-.about-portrait { filter: grayscale(1); object-position: 50% 22%; }
 .about-smile { object-position: 50% 24%; }
 html[lang="ar"] .main-nav a,
 html[lang="ar"] .main-nav > button { text-align: right; }
