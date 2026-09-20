@@ -17,7 +17,7 @@ function renderPress() {
   pressLoadMore.hidden = visible.length === matches.length;
   pressFilterStatus.textContent = language === 'ar'
     ? `${visible.length} من ${matches.length} مواد إعلامية`
-    : `${visible.length} of ${matches.length} publications`;
+    : `Showing ${visible.length} of ${matches.length}`;
 }
 pressFilters.forEach(button => button.addEventListener('click', () => {
   pressCurrentFilter = button.dataset.pressFilter;

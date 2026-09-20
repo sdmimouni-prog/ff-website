@@ -27,11 +27,11 @@ function updateAlbum() {
   photo.hidden = !categoryMatch || !textMatch || (curated && photo.dataset.featured !== 'true');
  });
  const count = albumPhotos.filter((photo) => !photo.hidden).length;
- albumStatus.textContent = language === 'ar' ? count + ' صورة من ' + albumPhotos.length : count + ' photographs out of ' + albumPhotos.length;
+ albumStatus.textContent = language === 'ar' ? count + ' صورة من ' + albumPhotos.length : `Showing ${count} of ${albumPhotos.length} photos`;
  document.querySelector('.album-empty').hidden = count !== 0;
  document.querySelector('[data-gallery-expand]').disabled = count === 0;
  albumMoreButton.hidden = albumFilter !== 'all' || !!query;
- albumMoreButton.querySelector('span').textContent = language === 'ar' ? (albumExpanded ? AR.albumLess : AR.albumMore) : (albumExpanded ? 'BACK TO THE SELECTION' : 'VIEW ALL 34 PHOTOS');
+ albumMoreButton.querySelector('span').textContent = language === 'ar' ? (albumExpanded ? AR.albumLess : AR.albumMore) : (albumExpanded ? 'BACK TO HIGHLIGHTS' : 'VIEW ALL 34 PHOTOS');
  albumMoreButton.setAttribute('aria-expanded',String(albumExpanded));
  albumFilters.forEach((button) => button.setAttribute('aria-pressed',String(button.dataset.albumFilter === albumFilter)));
  currentImageIndex = 0;
@@ -55,7 +55,7 @@ albumSearchToggle.addEventListener('click',() => {
 albumSearch.addEventListener('input',updateAlbum);
 document.querySelector('#album-clear').addEventListener('click',() => { albumSearch.value=''; updateAlbum(); albumSearch.focus(); });
 document.addEventListener('site:languagechange', () => {
- albumSearch.placeholder = language === 'ar' ? 'بورتريه، مراكش، كواليس…' : 'A portrait, Marrakech, a film set…';
+ albumSearch.placeholder = language === 'ar' ? 'بورتريه، مراكش، كواليس…' : 'Try a portrait, Marrakech or a film set…';
  updateAlbum();
 });
 

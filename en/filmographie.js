@@ -34,8 +34,8 @@ function renderCatalogueResults() {
     (catalogueKind === 'all' || film.kind === ({cinema:'Feature film',series:'TV series',telefilms:'TV film'}[catalogueKind])) &&
     normalizeSearch(`${film.title} ${film.international || ''} ${film.arabic} ${film.director} ${film.year}`).includes(term)
   );
-  results.innerHTML = projects.length ? projects.map(([key,film]) => `<button type="button" class="screen-card catalogue-card" data-film="${key}"><span class="screen-art ${key}"><img class="poster-original" src="${film.image}" alt="Poster for ${escapeHTML(film.title)}"></span><strong>${escapeHTML(film.title)}</strong><time>${film.year} · ${film.kind}</time></button>`).join('') : `<p class="catalogue-empty">${language === 'ar' ? 'لا توجد نتائج. جرّبوا عنواناً آخر.' : 'No projects found. Try another title.'}</p>`;
-  document.querySelector('#catalogue-count').textContent = language === 'ar' ? `${projects.length} أعمال` : `${projects.length} project${projects.length > 1 ? 's' : ''}`;
+  results.innerHTML = projects.length ? projects.map(([key,film]) => `<button type="button" class="screen-card catalogue-card" data-film="${key}"><span class="screen-art ${key}"><img class="poster-original" src="${film.image}" alt="Poster for ${escapeHTML(film.title)}"></span><strong>${escapeHTML(film.title)}</strong><time>${film.year} · ${film.kind}</time></button>`).join('') : `<p class="catalogue-empty">${language === 'ar' ? 'لا توجد نتائج. جرّبوا عنواناً آخر.' : 'No matching projects. Try a different title, director or year.'}</p>`;
+  document.querySelector('#catalogue-count').textContent = language === 'ar' ? `${projects.length} أعمال` : `${projects.length} project${projects.length === 1 ? '' : 's'}`;
 }
 function openCatalogue(kind) {
   catalogueKind = kind;

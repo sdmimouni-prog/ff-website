@@ -48,9 +48,9 @@ document.querySelector('#contact-copy').addEventListener('click', async () => {
   if (!contactPreparedText) return;
   try {
     await navigator.clipboard.writeText(contactPreparedText);
-    contactCopyStatus.textContent = contactText('Message copied. Paste it into your email app to send it.', 'تم نسخ الرسالة. ألصقوها في بريدكم الإلكتروني لإرسالها.');
+    contactCopyStatus.textContent = contactText('Message copied. Paste it into your email app when you’re ready to send it.', 'تم نسخ الرسالة. ألصقوها في بريدكم الإلكتروني لإرسالها.');
   } catch {
-    contactCopyStatus.textContent = contactText('Copying is unavailable. Use “Open my email app” or email us directly.', 'النسخ غير متاح. افتحوا تطبيق البريد أو راسلونا مباشرة.');
+    contactCopyStatus.textContent = contactText('We couldn’t copy your message. Select “Open my email app” or email us directly.', 'النسخ غير متاح. افتحوا تطبيق البريد أو راسلونا مباشرة.');
   }
 });
 
@@ -77,3 +77,26 @@ document.querySelectorAll('[data-contact-info]').forEach(button => button.addEve
     : contactText('This website presents Farah El Fassi’s work. For questions about content, photographs or usage rights, contact our team at the address below.', 'موقع تعريفي بفرح الفاسي. لأي استفسار عن المحتوى أو الصور أو حقوق استخدامها، يرجى التواصل مع فريقنا عبر البريد أدناه.');
   openContent(titleHTML('FARAH EL FASSI', title) + '<p>' + copy + '</p><p>' + contactHTML() + '</p>');
 }));
+
+// Keep validation messages in English even when the browser uses another language.
+const englishRequiredFields = {
+  name: 'Please enter your name.',
+  email: 'Please enter your email address.',
+  subject: 'Please choose a subject.',
+  message: 'Please write your message.'
+};
+contactForm.addEventListener('invalid', event => {
+  const field = event.target;
+  field.setCustomValidity('');
+  if (field.required && !field.value.trim()) {
+    field.setCustomValidity(englishRequiredFields[field.name] || 'Please complete this field.');
+  } else if (field.type === 'email' && field.validity.typeMismatch) {
+    field.setCustomValidity('Please enter a valid email address, such as name@example.com.');
+  } else if (field.validity.tooLong) {
+    field.setCustomValidity(`Please use no more than ${field.maxLength} characters.`);
+  }
+}, true);
+// A corrected selection must not retain an earlier custom validation message.
+contactForm.addEventListener('change', event => {
+  if (event.target.setCustomValidity) event.target.setCustomValidity('');
+});
