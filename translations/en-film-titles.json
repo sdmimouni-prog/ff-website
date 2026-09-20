@@ -1,0 +1,65 @@
+{
+  "batal": {
+    "title": "The Hero",
+    "label": "English festival title",
+    "source": {
+      "label": "Salé Film Festival — English title",
+      "url": "https://fiffs.ma/en/cineaste-detail.php?id=MTM0&type=0"
+    },
+    "note": "English title used in the festival’s official Farah El Fassi biography; main film listings also retain L’Batal."
+  },
+  "salamate": {
+    "title": "Salamat and His Daughters",
+    "label": "English title",
+    "source": {
+      "label": "IMDb — English title",
+      "url": "https://www.imdb.com/title/tt13493180/"
+    },
+    "note": "IMDb English display title. Shahid retains the transliterated Salamat Abou Lbanat."
+  },
+  "espoirs": {
+    "title": "The...Hopes",
+    "label": "English catalogue title",
+    "source": {
+      "label": "Filmexport — English catalogue",
+      "url": "https://www.filmexport.ma/en/longs-metrages/9_Des...-Espoirs"
+    },
+    "note": "Filmexport lists the...Hopes. Preserve this published wording; only initial capital normalised. Festival biography also uses Frustration; not substituted for the catalogue title."
+  },
+  "bonheurs": {
+    "title": "Small Pleasures",
+    "label": "English title",
+    "source": {
+      "label": "Filmexport — English title",
+      "url": "https://www.filmexport.ma/en/longs-metrages/37_Petits-Bonheurs"
+    },
+    "note": "Filmexport explicitly provides Small pleasures as the English title. Title case normalised; do not use literal Little Joys."
+  },
+  "coeur": {
+    "title": "Drowned Heart",
+    "label": "English title",
+    "source": {
+      "label": "Capuseen — English release",
+      "url": "https://www.capuseen.com/films/7516-drowned-heart"
+    },
+    "note": "English VOD listing, also printed on the international poster supplied by the user."
+  },
+  "enfant": {
+    "title": "The Child Sheikh",
+    "label": "English title",
+    "source": {
+      "label": "IMDb — English alternative title",
+      "url": "https://www.imdb.com/title/tt2403407/"
+    },
+    "note": "IMDb Also known as and ElCinema English listing use The Child Sheikh; avoid independently translating the French title."
+  },
+  "camarades": {
+    "title": "Time of Comrades",
+    "label": "English title",
+    "source": {
+      "label": "Tetouan Film Festival — English title",
+      "url": "https://festivaltetouan.org/colloque-rencontres-2021/"
+    },
+    "note": "Official Tetouan festival director biography and Arsenal Berlin screening programme use Time of Comrades."
+  }
+}

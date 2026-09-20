@@ -130,11 +130,17 @@ const FILMS = {
       {
         "label": "IMDb — project details",
         "url": "https://www.imdb.com/fr/title/tt34741810/"
+      },
+      {
+        "label": "Salé Film Festival — English title",
+        "url": "https://fiffs.ma/en/cineaste-detail.php?id=MTM0&type=0"
       }
     ],
     "image": "../assets/films/batal.jpg",
     "meta": "2024 · Feature film",
-    "duration": "102 min"
+    "duration": "102 min",
+    "englishTitle": "The Hero",
+    "englishTitleLabel": "English festival title"
   },
   "salamate": {
     "title": "Salamate et ses filles",
@@ -149,10 +155,16 @@ const FILMS = {
       {
         "label": "IMDb — project details",
         "url": "https://www.imdb.com/fr/title/tt13493180/"
+      },
+      {
+        "label": "IMDb — English title",
+        "url": "https://www.imdb.com/title/tt13493180/"
       }
     ],
     "image": "../assets/films/salamate.jpg",
-    "meta": "2021 · TV series"
+    "meta": "2021 · TV series",
+    "englishTitle": "Salamat and His Daughters",
+    "englishTitleLabel": "English title"
   },
   "mora": {
     "title": "La Mora",
@@ -234,13 +246,19 @@ const FILMS = {
       {
         "label": "IMDb — project details",
         "url": "https://www.imdb.com/fr/title/tt8871138/"
+      },
+      {
+        "label": "Filmexport — English catalogue",
+        "url": "https://www.filmexport.ma/en/longs-metrages/9_Des...-Espoirs"
       }
     ],
     "duration": "122 min (CCM listing)",
     "cast": "Omar Lotfi, Farah El Fassi, Fehd Benchemsi, Ibtissam Moustatir",
     "image": "../assets/films/espoirs.webp",
     "meta": "2015 · Feature film",
-    "role": "Leïla"
+    "role": "Leïla",
+    "englishTitle": "The...Hopes",
+    "englishTitleLabel": "English catalogue title"
   },
   "bonheurs": {
     "title": "Petits bonheurs",
@@ -258,13 +276,19 @@ const FILMS = {
       {
         "label": "IMDb — project details",
         "url": "https://www.imdb.com/fr/title/tt3644024/"
+      },
+      {
+        "label": "Filmexport — English title",
+        "url": "https://www.filmexport.ma/en/longs-metrages/37_Petits-Bonheurs"
       }
     ],
     "duration": "85 min",
     "cast": "Anissa Lanaya, Farah El Fassi, Maha Daoud, Fama Ferrah",
     "image": "../assets/films/bonheurs.webp",
     "meta": "2015 · Feature film",
-    "role": "Chama"
+    "role": "Chama",
+    "englishTitle": "Small Pleasures",
+    "englishTitleLabel": "English title"
   },
   "hibal": {
     "title": "Hibal Rih",
@@ -308,6 +332,10 @@ const FILMS = {
       {
         "label": "IMDb — project details",
         "url": "https://www.imdb.com/fr/title/tt6838990/"
+      },
+      {
+        "label": "Capuseen — English release",
+        "url": "https://www.capuseen.com/films/7516-drowned-heart"
       }
     ],
     "duration": "100 min",
@@ -316,7 +344,9 @@ const FILMS = {
     "alternate": "../assets/films/coeur-en.webp",
     "international": "Drowned Heart",
     "image": "../assets/films/coeur.webp",
-    "meta": "2014 · Feature film"
+    "meta": "2014 · Feature film",
+    "englishTitle": "Drowned Heart",
+    "englishTitleLabel": "English title"
   },
   "boughaba": {
     "title": "Boughaba",
@@ -353,11 +383,17 @@ const FILMS = {
       {
         "label": "Le360 — 2016 theatrical release",
         "url": "https://fr.le360.ma/culture/video-lenfant-cheikh-de-hamid-bennani-enfin-au-cinema-le-7-septembre-81917/"
+      },
+      {
+        "label": "IMDb — English alternative title",
+        "url": "https://www.imdb.com/title/tt2403407/"
       }
     ],
     "image": "../assets/films/enfant.jpg",
     "meta": "2012 · Feature film",
-    "duration": "80 min"
+    "duration": "80 min",
+    "englishTitle": "The Child Sheikh",
+    "englishTitleLabel": "English title"
   },
   "camarades": {
     "title": "Le Temps des camarades",
@@ -376,11 +412,17 @@ const FILMS = {
       {
         "label": "Salé Film Festival — Farah’s career",
         "url": "https://www.fiffs.ma/cineaste-detail.php?id=MTM0&type=0"
+      },
+      {
+        "label": "Tetouan Film Festival — English title",
+        "url": "https://festivaltetouan.org/colloque-rencontres-2021/"
       }
     ],
     "image": "../assets/films/camarades.jpg",
     "meta": "2009 · Feature film",
-    "duration": "103 min"
+    "duration": "103 min",
+    "englishTitle": "Time of Comrades",
+    "englishTitleLabel": "English title"
   }
 };
 
@@ -452,7 +494,7 @@ const modalBuilders = {
   biographie: () => titleHTML(language === 'ar' ? 'نبذة عني' : 'ABOUT', language === 'ar' ? 'فرح الفاسي' : 'One passion, many worlds.') +
     `<div class="modal-film"><img src="../assets/gallery/img_1605.webp" alt="Portrait of Farah El Fassi"><div><p>${language === 'ar' ? AR.aboutText : $('.about-description').dataset.fr}</p><p>${language === 'ar' ? 'لأي مشروع سينمائي أو تعاون أو طلب إعلامي:' : 'For a creative project, collaboration or media enquiry:'}</p><p>${contactHTML()}</p></div></div>`,
   filmographie: () => titleHTML('CINEMA & TELEVISION', 'Selected roles') +
-    `<div class="modal-films">${Object.entries(FILMS).map(([key, film]) => `<button type="button" class="film-card" data-film="${key}"><img src="${film.image}" alt="Poster for ${escapeHTML(film.title)}"><h3>${escapeHTML(film.title)}</h3><p>${film.meta}</p></button>`).join('')}</div>`,
+    `<div class="modal-films">${Object.entries(FILMS).map(([key, film]) => `<button type="button" class="film-card" data-film="${key}"><img src="${film.image}" alt="Poster for ${escapeHTML(film.title)}"><h3>${escapeHTML(film.title)}</h3>${englishFilmTitle(film)}<p>${film.meta}</p></button>`).join('')}</div>`,
   distinctions: () => titleHTML(language === 'ar' ? 'التتويجات' : 'AWARDS', language === 'ar' ? 'مسيرة حافلة بالتتويجات' : 'An award-winning journey') +
     `<ol class="modal-timeline">${AWARDS.map(([year, title, event]) => `<li><time>${year}</time><div><strong>${title}</strong><span>${event}</span></div></li>`).join('')}</ol>`,
   actualites: () => placeholderHTML(language === 'ar' ? 'آخر المستجدات' : 'Latest news',
@@ -479,7 +521,7 @@ document.addEventListener('click', (event) => {
   const film = FILMS[button.dataset.film];
   if (!film) return;
   const facts = [['Director', film.director], ['Screenplay', film.writer], ['Running time', film.duration], ['Role', film.role], ['Cast', film.cast]].filter(([, value]) => value);
-  openContent(`<div class="modal-film film-detail"><div><img class="film-detail-poster" src="${film.image}" alt="Poster for ${escapeHTML(film.title)}">${film.alternate ? `<details class="film-alternate"><summary>International poster — ${escapeHTML(film.international)}</summary><img src="${film.alternate}" alt="Drowned Heart poster" loading="lazy"></details>` : ''}</div><div>${titleHTML(film.meta, escapeHTML(film.title))}<p lang="ar" dir="rtl" class="film-arabic">${film.arabic}</p><p>${escapeHTML(film.summary)}</p><dl class="film-facts">${facts.map(([label, value]) => `<div><dt>${label}</dt><dd>${escapeHTML(value)}</dd></div>`).join('')}</dl><p class="film-date-note">${escapeHTML(film.dates)}</p><div class="film-sources"><strong>Find out more</strong>${film.sources.map((source) => `<a href="${source.url}" target="_blank" rel="noopener noreferrer">${escapeHTML(source.label)} ↗</a>`).join('')}</div></div></div>`);
+  openContent(`<div class="modal-film film-detail"><div><img class="film-detail-poster" src="${film.image}" alt="Poster for ${escapeHTML(film.title)}">${film.alternate ? `<details class="film-alternate"><summary>International poster — ${escapeHTML(film.international)}</summary><img src="${film.alternate}" alt="Drowned Heart poster" loading="lazy"></details>` : ''}</div><div>${titleHTML(film.meta, escapeHTML(film.title))}${film.englishTitle ? `<p class="film-english-detail"><span>${escapeHTML(film.englishTitleLabel)}</span>${escapeHTML(film.englishTitle)}</p>` : ''}<p lang="ar" dir="rtl" class="film-arabic">${film.arabic}</p><p>${escapeHTML(film.summary)}</p><dl class="film-facts">${facts.map(([label, value]) => `<div><dt>${label}</dt><dd>${escapeHTML(value)}</dd></div>`).join('')}</dl><p class="film-date-note">${escapeHTML(film.dates)}</p><div class="film-sources"><strong>Find out more</strong>${film.sources.map((source) => `<a href="${source.url}" target="_blank" rel="noopener noreferrer">${escapeHTML(source.label)} ↗</a>`).join('')}</div></div></div>`);
 });
 
 // Native dialogs provide focus trapping and Escape handling without a library.
@@ -661,3 +703,7 @@ function updateNavigation() {
 }
 window.addEventListener('scroll', () => { if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(updateNavigation); } }, { passive: true });
 updateNavigation();
+
+function englishFilmTitle(film) {
+  return film.englishTitle ? `<span class="film-english-title">${escapeHTML(film.englishTitle)}</span>` : '';
+}

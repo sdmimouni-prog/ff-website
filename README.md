@@ -18,6 +18,8 @@ Les pages anglaises sont générées depuis les pages françaises par `scripts/b
 
 `translations/en-blocks.json` contient les blocs éditoriaux dont l’ordre des mots change en anglais. `translations/en-form-validation.js` garantit des erreurs de formulaire en anglais, quelle que soit la langue du navigateur. Les compteurs de recherche gèrent également zéro, un et plusieurs résultats.
 
+`translations/en-film-titles.json` contient uniquement les titres anglais documentés, leur source et les éventuelles variantes de catalogue. Le titre original reste principal ; le complément anglais apparaît dans les cartes et les fiches et devient recherchable. Les sources sont consultables dans les fiches. Les variantes de festival sont identifiées comme telles. `translations/en-content.css` règle leur présentation secondaire. Les introductions de presse sont traduites, mais les URL et la langue des articles externes sont conservées.
+
 ## Déploiement
 
 Le workflow `.github/workflows/pages.yml` vérifie les ressources et le JavaScript, prépare `_site`, puis publie sur GitHub Pages à chaque push sur `main`. Dans Settings → Pages, choisir « GitHub Actions ».
