@@ -4,10 +4,14 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 import re
+import runpy
 import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / '_site'
+
+# Keep translated pages in sync with the approved layout before packaging.
+runpy.run_path(str(ROOT / 'scripts/build-english.py'), run_name='__main__')
 
 
 class Page(HTMLParser):
@@ -25,7 +29,9 @@ class Page(HTMLParser):
                 self.refs.append(attrs[key])
 
 
-pages = {path.name: Page(path) for path in ROOT.glob('*.html')}
+public_dirs = (ROOT, ROOT / 'en')
+pages = {path.relative_to(ROOT).as_posix(): Page(path)
+         for directory in public_dirs for path in directory.glob('*.html')}
 errors = []
 for name, page in pages.items():
     errors.extend(f'{name}: duplicate ID {value}' for value, count in Counter(page.ids).items() if count > 1)
@@ -33,13 +39,15 @@ for name, page in pages.items():
         url = urlsplit(ref)
         if url.scheme or url.netloc:
             continue
-        path = unquote(url.path) or name
+        target = ((ROOT / name).parent / unquote(url.path)).resolve() if url.path else ROOT / name
+        path = target.relative_to(ROOT).as_posix()
         if not (ROOT / path).is_file():
             errors.append(f'{name}: missing file {ref}')
         if url.fragment and path in pages and unquote(url.fragment) not in pages[path].ids:
             errors.append(f'{name}: missing anchor {ref}')
 
-public_code = sorted(path for path in ROOT.iterdir() if path.suffix in ('.html', '.css', '.js'))
+public_code = sorted(path for directory in public_dirs for path in directory.iterdir()
+                     if path.suffix in ('.html', '.css', '.js', '.svg'))
 for path in public_code:
     content = path.read_text()
     if re.search(r'(?:/Users/|file:///|https?://(?:localhost|127\.0\.0\.1))', content):
@@ -54,7 +62,9 @@ if OUTPUT.exists():
     shutil.rmtree(OUTPUT)
 OUTPUT.mkdir()
 for path in public_code:
-    shutil.copy2(path, OUTPUT / path.name)
+    destination = OUTPUT / path.relative_to(ROOT)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(path, destination)
 shutil.copytree(ROOT / 'assets', OUTPUT / 'assets')
 shutil.copy2(ROOT / 'favicon.ico', OUTPUT / 'favicon.ico')
 (OUTPUT / '.nojekyll').touch()

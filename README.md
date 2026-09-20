@@ -12,7 +12,9 @@ Ouvrir http://localhost:8080. Aucun outil de compilation nécessaire.
 
 ## Pages
 
-Accueil, À propos, Filmographie (15 œuvres documentées), Galerie (34 photos fournies), Presse (15 publications) et Contact. Header et footer harmonisés, navigation en français.
+Accueil, À propos, Filmographie (15 œuvres documentées), Galerie (34 photos fournies), Presse (15 publications) et Contact. Les six versions anglaises sont disponibles sous `/en/`, avec le même header, le même footer, les mêmes styles et les mêmes médias.
+
+Les pages anglaises sont générées depuis les pages françaises par `scripts/build-english.py`. Modifier `translations/en.json` pour les textes HTML et `translations/en-runtime.json` pour les textes JavaScript. Les titres originaux des films, les noms propres et les liens des sources sont conservés. Le build régénère les versions anglaises et signale toute nouvelle chaîne HTML sans traduction. Ne pas modifier directement les fichiers générés dans `en/`.
 
 ## Déploiement
 

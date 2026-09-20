@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Check JavaScript syntax
-        run: for file in *.js; do node --check "$file"; done
       - name: Validate and package static files
         run: python3 scripts/build-site.py
+      - name: Check JavaScript syntax
+        run: for file in *.js en/*.js; do node --check "$file"; done
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
