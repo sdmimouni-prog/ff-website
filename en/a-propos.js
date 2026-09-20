@@ -2,4 +2,3 @@
 'use strict';
 
 // Page-specific translations extend the shared navigation and dialog vocabulary.
-
