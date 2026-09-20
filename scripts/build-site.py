@@ -6,6 +6,7 @@ from urllib.parse import unquote, urlsplit
 import re
 import runpy
 import shutil
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / '_site'
@@ -18,10 +19,13 @@ class Page(HTMLParser):
     def __init__(self, path):
         super().__init__()
         self.ids, self.refs = [], []
+        self.canonical = None
         self.feed(path.read_text())
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
+        if tag == 'link' and attrs.get('rel') == 'canonical':
+            self.canonical = attrs['href']
         if attrs.get('id'):
             self.ids.append(attrs['id'])
         for key in ('src', 'href', 'data-image'):
@@ -58,6 +62,18 @@ for path in public_code:
 if errors:
     raise SystemExit('\n'.join(errors))
 
+# Publish the canonical French and English URLs for discovery. Language pairs
+# are declared in each HTML head, so crawlers do not need to execute JavaScript.
+ET.register_namespace('', 'http://www.sitemaps.org/schemas/sitemap/0.9')
+urlset = ET.Element('{http://www.sitemaps.org/schemas/sitemap/0.9}urlset')
+for name in sorted(pages):
+    url = ET.SubElement(urlset, 'url')
+    ET.SubElement(url, 'loc').text = pages[name].canonical
+ET.indent(urlset, space='  ')
+ET.ElementTree(urlset).write(ROOT / 'sitemap.xml', encoding='utf-8', xml_declaration=True)
+(ROOT / 'robots.txt').write_text('User-agent: *\nAllow: /\n\nSitemap: ' + pages['index.html'].canonical + 'sitemap.xml\n')
+runpy.run_path(str(ROOT / 'scripts/check-seo.py'), run_name='__main__')
+
 if OUTPUT.exists():
     shutil.rmtree(OUTPUT)
 OUTPUT.mkdir()
@@ -67,5 +83,7 @@ for path in public_code:
     shutil.copy2(path, destination)
 shutil.copytree(ROOT / 'assets', OUTPUT / 'assets')
 shutil.copy2(ROOT / 'favicon.ico', OUTPUT / 'favicon.ico')
+for name in ('robots.txt', 'sitemap.xml'):
+    shutil.copy2(ROOT / name, OUTPUT / name)
 (OUTPUT / '.nojekyll').touch()
 print(f'Validated {len(pages)} pages; packaged {len(list(OUTPUT.rglob("*")))} entries in _site.')

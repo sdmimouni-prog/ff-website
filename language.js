@@ -30,7 +30,10 @@
     return target;
   }
 
-  const selected = validLanguage(explicit) ? explicit : preferred;
+  // Restore a preference at the default entrance only. A shared /en/ URL or a
+  // language-specific inner page keeps its language, including search results.
+  const defaultEntrance = path === '' || path === 'index.html';
+  const selected = validLanguage(explicit) ? explicit : (defaultEntrance ? preferred : null);
   if (validLanguage(selected) && selected !== language) {
     const target = equivalent(selected);
     // Carry explicit intent to the destination even when storage is unavailable.

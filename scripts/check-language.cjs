@@ -78,13 +78,15 @@ for (const base of ['https://example.com/', 'https://example.com/ff-website/']) 
     assert.equal(new URL(english.url).hash, '#contenu');
     assert.equal(new URL(english.url).searchParams.has('lang'), false);
     assert.equal(visit(new URL(name + '.html', base), base, storage).redirect,
-      new URL(`en/${name}.html?lang=en`, base).href);
+      name === 'index' ? new URL('en/index.html?lang=en', base).href : null);
     english.changeHash('#contact-form-title');
     const frenchAgain = visit(english.links[0].href, base, storage);
     assert.equal(frenchAgain.language, 'fr');
     assert.equal(frenchAgain.redirect, null);
     assert.equal(new URL(frenchAgain.url).hash, '#contact-form-title');
     assert.equal(visit(new URL(name + '.html', base), base, storage).redirect, null);
+    // Shared English URLs must stay English even after a French preference.
+    assert.equal(visit(new URL(`en/${name}.html`, base), base, storage).redirect, null);
     // Explicit switches still work when the browser denies all storage operations.
     assert.equal(visit(french.links[1].href, base, storage, true).redirect, null);
     assert.equal(visit(english.links[0].href, base, storage, true).redirect, null);
@@ -99,5 +101,6 @@ for (const base of ['https://example.com/', 'https://example.com/ff-website/']) 
   const override = visit(new URL('?lang=fr', base), base, storage);
   assert.equal(override.redirect, null, 'explicit French overrides saved English');
   assert.equal(visit(new URL('en/', base), base, new Map()).language, 'en', 'first direct English visit');
+  assert.equal(visit(new URL('en/', base), base, storage).redirect, null, 'shared English home overrides saved French');
 }
 console.log(`Language navigation verified: ${scenarios} page/hosting combinations, preferences, anchors, parameters, static links and blocked storage.`);

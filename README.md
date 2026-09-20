@@ -20,6 +20,14 @@ Les pages anglaises sont générées depuis les pages françaises par `scripts/b
 
 `translations/en-film-titles.json` contient uniquement les titres anglais documentés, leur source et les éventuelles variantes de catalogue. Le titre original reste principal ; le complément anglais apparaît dans les cartes et les fiches et devient recherchable. Les sources sont consultables dans les fiches. Les variantes de festival sont identifiées comme telles. `translations/en-content.css` règle leur présentation secondaire. Les introductions de presse sont traduites, mais les URL et la langue des articles externes sont conservées.
 
+## Langues, référencement et partage
+
+Chaque page anglaise possède son URL sous `/en/`, son titre, sa description et ses textes alternatifs traduits. Les balises Google, Open Graph (partage WhatsApp) et Twitter sont présentes directement dans le HTML. Le portrait de partage est commun aux deux langues et ne contient aucun texte ; son alternative est traduite. Les titres et descriptions anglais se modifient dans `translations/en.json`.
+
+Les liens `hreflang` réciproques relient les six paires FR/EN et indiquent le français par défaut. Le domaine canonique reste `https://ff-website-henna.vercel.app/` ; GitHub Pages est un miroir. Le build génère `sitemap.xml` et `robots.txt` et vérifie les métadonnées via `scripts/check-seo.py`. Les URLs de partage anglaises sont celles sous `/en/`, sans avoir besoin d’exécuter JavaScript.
+
+Le sélecteur mémorise la langue dans le navigateur et la restaure à l’entrée générale du site. Une URL anglaise partagée conserve sa langue, même si le visiteur avait choisi le français précédemment. Le choix explicite FR/EN reste prioritaire ; les paramètres et ancres sont conservés.
+
 ## Déploiement
 
 Le workflow `.github/workflows/pages.yml` vérifie les ressources et le JavaScript, prépare `_site`, puis publie sur GitHub Pages à chaque push sur `main`. Dans Settings → Pages, choisir « GitHub Actions ».

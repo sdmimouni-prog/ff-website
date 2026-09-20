@@ -51,6 +51,8 @@ class EnglishPage(HTMLParser):
                 updates['content'] = translate(attrs['content'])
             if attrs.get('property') == 'og:locale':
                 updates['content'] = 'en_GB'
+            if attrs.get('property') == 'og:locale:alternate':
+                updates['content'] = 'fr_FR'
             if attrs.get('property') == 'og:url':
                 updates['content'] = attrs['content'].replace('vercel.app/', 'vercel.app/en/')
         if tag == 'link' and attrs.get('rel') == 'canonical':
