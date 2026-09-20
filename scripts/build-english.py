@@ -65,7 +65,7 @@ class EnglishPage(HTMLParser):
             updates['src'] = 'signature-light.svg' if 'claire' in attrs['src'] else 'signature.svg'
         if tag == 'script' and re.match(r'^[\w-]+\.js(?:\?|$)', attrs.get('src', '')):
             updates['src'] = ('../' + attrs['src'] if attrs['src'].startswith('language.js')
-                              else attrs['src'].split('?')[0] + '?v=language-switch-1')
+                              else attrs['src'])
         if attrs.get('data-language'):
             locale = attrs['data-language']
             updates['href'] = ('../' + attrs['href'] if locale == 'fr'

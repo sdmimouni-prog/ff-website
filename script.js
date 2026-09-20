@@ -32,7 +32,7 @@
  */
 const SITE_CONFIG = {
   contactEmail: 'contact@farahelfassi.com',
-  showreelVideoUrl: '', // À renseigner à réception de la vidéo.
+  showreelVideoUrl: 'assets/video/farah-showreel-v1.mp4',
   social: {
     instagram: 'https://www.instagram.com/farahelfassi1/',
     facebook: 'https://www.facebook.com/Farah.Elfassi.Officiel/'
@@ -460,8 +460,13 @@ document.addEventListener('keydown', (event) => {
 function openContent(html) {
   if (imageDialog.open) imageDialog.close();
   dialogBody.innerHTML = html;
+  const video = $('video', dialogBody);
+  contentDialog.classList.toggle('content-dialog--video', Boolean(video));
   document.body.classList.add('modal-open');
   contentDialog.showModal();
+  // Start within the Play button's user gesture; native controls remain
+  // available if the browser declines playback (for example in low-power mode).
+  if (video) video.play().catch(() => {});
 }
 function contactHTML() {
   return `<a href="mailto:${escapeHTML(SITE_CONFIG.contactEmail)}">${escapeHTML(SITE_CONFIG.contactEmail)}</a>`;
@@ -490,7 +495,7 @@ const modalBuilders = {
   video: () => {
     const title = titleHTML(language === 'ar' ? 'العرض الفني' : 'BANDE DÉMO', language === 'ar' ? 'أدوار، مشاعر، شغف.' : 'Des rôles, des émotions, une même passion.');
     if (!SITE_CONFIG.showreelVideoUrl) return title + `<p>${language === 'ar' ? 'سيكون العرض الفني متاحاً قريباً. لأي طلب مهني، تواصلوا معنا.' : 'La bande démo sera disponible prochainement. Pour toute demande professionnelle, contactez-nous.'}</p><p>${contactHTML()}</p>`;
-    return title + `<video controls playsinline preload="metadata" src="${escapeHTML(SITE_CONFIG.showreelVideoUrl)}">Votre navigateur ne prend pas en charge la lecture vidéo.</video>`;
+    return title + `<video class="showreel-player" controls playsinline preload="metadata" width="1920" height="1080" aria-label="Bande démo de Farah El Fassi" src="${escapeHTML(SITE_CONFIG.showreelVideoUrl)}">Votre navigateur ne prend pas en charge la lecture vidéo.</video>`;
   }
 };
 

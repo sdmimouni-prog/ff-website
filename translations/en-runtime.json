@@ -655,5 +655,6 @@
   "'Cinéma'": "'Cinema'",
   "'Presse'": "'Press'",
   "${projects.length} projet${projects.length > 1 ? 's' : ''}": "${projects.length} project${projects.length === 1 ? '' : 's'}",
-  "count + ' photographies sur ' + albumPhotos.length": "`Showing ${count} of ${albumPhotos.length} photos`"
+  "count + ' photographies sur ' + albumPhotos.length": "`Showing ${count} of ${albumPhotos.length} photos`",
+  "Bande démo de Farah El Fassi": "Farah El Fassi showreel"
 }
