@@ -430,21 +430,11 @@ let currentImageIndex = 0;
 
 // Preserve the original French markup for shared UI updates.
 $$('[data-i18n]').forEach((element) => { element.dataset.fr = element.innerHTML; });
-function setLanguage(nextLanguage) {
-  language = nextLanguage === 'ar' ? 'ar' : 'fr';
-  document.documentElement.lang = language;
-  $$('[data-i18n]').forEach((element) => {
-    element.innerHTML = language === 'ar' ? (AR[element.dataset.i18n] || element.dataset.fr) : element.dataset.fr;
-  });
-  menuToggle.setAttribute('aria-label', nav.classList.contains('is-open')
-    ? (language === 'ar' ? 'إغلاق القائمة' : 'Fermer le menu')
-    : (language === 'ar' ? 'فتح القائمة' : 'Ouvrir le menu'));
-  try { sessionStorage.setItem('farah-language', language); } catch { /* Optional preference storage. */ }
+// Each locale has complete pages; language.js handles navigation and persistence.
+// Notify page scripts after they have registered their shared UI listeners.
+document.addEventListener('DOMContentLoaded', () => {
   document.dispatchEvent(new CustomEvent('site:languagechange', { detail: { language } }));
-}
-// The public site is French-only; ignore a previous Arabic session preference.
-// Wait for deferred page scripts to register their shared UI listeners.
-document.addEventListener('DOMContentLoaded', () => setLanguage('fr'));
+});
 
 
 // Mobile menu: closes after a selection or Escape, and resets on desktop.

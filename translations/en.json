@@ -692,5 +692,11 @@
   "CONTACT": "CONTACT",
   "EMAIL": "EMAIL",
   "+212 679-110749": "+212 679-110749",
-  "carrousel": "carousel"
+  "carrousel": "carousel",
+  "Choisir la langue": "Choose language",
+  "Français": "Français",
+  "English": "English",
+  "FR": "FR",
+  "EN": "EN",
+  "/": "/"
 }

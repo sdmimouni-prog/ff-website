@@ -62,7 +62,16 @@ class EnglishPage(HTMLParser):
         if attrs.get('src') in ('assets/signature.png', 'assets/signature-claire.png'):
             updates['src'] = 'signature-light.svg' if 'claire' in attrs['src'] else 'signature.svg'
         if tag == 'script' and re.match(r'^[\w-]+\.js(?:\?|$)', attrs.get('src', '')):
-            updates['src'] = attrs['src'].split('?')[0] + '?v=english-content-3'
+            updates['src'] = ('../' + attrs['src'] if attrs['src'].startswith('language.js')
+                              else attrs['src'].split('?')[0] + '?v=language-switch-1')
+        if attrs.get('data-language'):
+            locale = attrs['data-language']
+            updates['href'] = ('../' + attrs['href'] if locale == 'fr'
+                               else attrs['href'].removeprefix('en/'))
+            if locale == 'fr':
+                raw = re.sub(r'\s+aria-current="true"', '', raw)
+            else:
+                raw = raw[:-1] + ' aria-current="true">'
         for key, value in updates.items():
             raw = re.sub(r'(\b' + re.escape(key) + r'\s*=\s*)([\"\'])(.*?)\2', lambda m: m[1] + '"' + escape(value, quote=True) + '"', raw, count=1, flags=re.S)
         self.parts.append(raw)

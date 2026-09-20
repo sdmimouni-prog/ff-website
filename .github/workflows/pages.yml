@@ -21,6 +21,8 @@ jobs:
         run: python3 scripts/build-site.py
       - name: Check JavaScript syntax
         run: for file in *.js en/*.js; do node --check "$file"; done
+      - name: Check language navigation
+        run: node scripts/check-language.cjs
       - uses: actions/upload-pages-artifact@v4
         with:
           path: _site
