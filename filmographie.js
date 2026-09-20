@@ -43,7 +43,7 @@ function renderCatalogueResults() {
   const term = normalizeSearch(input.value.trim());
   const projects = Object.entries(FILMS).filter(([, film]) =>
     (catalogueKind === 'all' || film.kind === ({cinema:'Long métrage',series:'Série TV',telefilms:'Téléfilm'}[catalogueKind])) &&
-    normalizeSearch(`${film.title} ${film.arabic} ${film.director} ${film.year}`).includes(term)
+    normalizeSearch(`${film.title} ${film.international || ''} ${film.arabic} ${film.director} ${film.year}`).includes(term)
   );
   results.innerHTML = projects.length ? projects.map(([key,film]) => `<button type="button" class="screen-card catalogue-card" data-film="${key}"><span class="screen-art ${key}"><img class="poster-original" src="${film.image}" alt="Affiche de ${escapeHTML(film.title)}"></span><strong>${escapeHTML(film.title)}</strong><time>${film.year} · ${film.kind}</time></button>`).join('') : `<p class="catalogue-empty">${language === 'ar' ? 'لا توجد نتائج. جرّبوا عنواناً آخر.' : 'Aucun projet trouvé. Essayez un autre titre.'}</p>`;
   document.querySelector('#catalogue-count').textContent = language === 'ar' ? `${projects.length} أعمال` : `${projects.length} projet${projects.length > 1 ? 's' : ''}`;

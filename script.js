@@ -168,7 +168,7 @@ const FILMS = {
         "url": "https://www.imdb.com/fr/title/tt10743088/"
       }
     ],
-    "image": "assets/films/mora.jpg",
+    "image": "assets/films/mora-upload.jpg",
     "meta": "2020 · Long métrage",
     "duration": "91 min"
   },
@@ -332,7 +332,7 @@ const FILMS = {
         "url": "https://www.imdb.com/fr/title/tt3592238/"
       }
     ],
-    "image": "assets/films/boughaba.jpg",
+    "image": "assets/films/boughaba-upload.jpg",
     "meta": "2013 · Téléfilm"
   },
   "enfant": {

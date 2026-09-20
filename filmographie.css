@@ -43,7 +43,7 @@
 .screen-art { display: block; position: relative; width: 100%; aspect-ratio: 2 / 3; overflow: clip; background: #181a19; isolation: isolate; }
 .screen-art img { width: 100%; height: 100%; object-fit: cover; }
 .screen-art .poster-ambience { position: absolute; inset: 0; filter: blur(10px) brightness(.42); z-index: -1; transform: scale(1.15); }
-.screen-art.page .poster-original, .screen-art.espoirs .poster-original { object-fit: contain; }
+.screen-art.page .poster-original, .screen-art.espoirs .poster-original, .screen-art.mora .poster-original { object-fit: contain; }
 .screen-art.bayn .poster-original { position: absolute; top: -30%; left: -14.5%; width: 129%; max-width: none; height: 187%; object-fit: fill; }
 .featured-card .screen-art { position: absolute; inset: 0; height: 100%; }
 .screen-card-info { position: absolute; inset: auto 0 0; padding: calc(30 * var(--u)) calc(8 * var(--u)) calc(7 * var(--u)); background: linear-gradient(0deg,#080a0a 0%,#080a0a 46%,#080a0ab8 70%,#080a0a00 100%); }
