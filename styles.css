@@ -102,7 +102,7 @@ html[lang="ar"] .site-header, html[lang="ar"] .site-footer { --sans: Tahoma, Ari
 .about-copy .outline-button { margin-top: calc(12 * var(--u)); min-width: calc(136 * var(--u)); }
 .about-portrait, .about-smile { width: 100%; height: 100%; object-fit: cover; }
 .about-portrait { overflow: hidden; }
-.about-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+.about-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; filter: grayscale(1); }
 .about-pillars { display: flex; flex-direction: column; justify-content: space-between; padding: calc(25 * var(--u)) calc(16 * var(--u)) calc(18 * var(--u)) calc(32 * var(--u)); background: linear-gradient(115deg,#f4efe8,#eee9e2); }
 .pillar .icon { width: calc(20 * var(--u)); height: calc(20 * var(--u)); margin-bottom: calc(5 * var(--u)); color: var(--accent); stroke-width: 1.3; }
 .pillar p { display: grid; gap: calc(1 * var(--u)); }
@@ -433,7 +433,7 @@ html[lang="ar"] .outline-button [data-i18n] { font-size: 1.05em; }
   .site-header > .brand { font-size: calc(22 * var(--u)); }
   .hero h1 { transform: scaleX(.83); transform-origin: top left; width: max-content; }
   .hero-quote { left: auto; right: calc(39 * var(--u)); width: calc(154 * var(--u)); font-size: calc(18 * var(--u)); line-height: 1.3; }
-  .about { grid-template-columns: 32.86% 26.51% 16.94% 23.69%; }
+  .about { grid-template-columns: 32.86% 26.51% 16.94% 23.69%; grid-template-rows: minmax(0,1fr); }
   .about-description { font-size: calc(10.2 * var(--u)); max-width: calc(265 * var(--u)); line-height: 1.76; }
   .about-pillars { padding-left: calc(32 * var(--u)); }
   .awards-photo { width: calc(171 * var(--u)); object-fit: fill; }
