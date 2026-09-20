@@ -102,7 +102,7 @@ html[lang="ar"] .site-header, html[lang="ar"] .site-footer { --sans: Tahoma, Ari
 .about-copy .outline-button { margin-top: calc(12 * var(--u)); min-width: calc(136 * var(--u)); }
 .about-portrait, .about-smile { width: 100%; height: 100%; object-fit: cover; }
 .about-portrait { overflow: hidden; }
-.about-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; transform: scale(1.5); transform-origin: 50% 65%; }
+.about-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
 .about-pillars { display: flex; flex-direction: column; justify-content: space-between; padding: calc(25 * var(--u)) calc(16 * var(--u)) calc(18 * var(--u)) calc(32 * var(--u)); background: linear-gradient(115deg,#f4efe8,#eee9e2); }
 .pillar .icon { width: calc(20 * var(--u)); height: calc(20 * var(--u)); margin-bottom: calc(5 * var(--u)); color: var(--accent); stroke-width: 1.3; }
 .pillar p { display: grid; gap: calc(1 * var(--u)); }
