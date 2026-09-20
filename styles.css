@@ -77,10 +77,10 @@ html[lang="ar"] .site-header, html[lang="ar"] .site-footer { --sans: Tahoma, Ari
 .menu-toggle { display: none; }
 
 /* 02 — Hero / 399 reference pixels. Text remains real HTML. */
-.hero { position: relative; height: calc(399 * var(--u)); isolation: isolate; overflow: hidden; background: #e4e3e0; }
-/* Neutral fades frame the monochrome portrait without covering the face. */
-.hero-background { position: absolute; inset: 0 auto 0 35%; width: 44%; max-width: none; height: 100%; object-fit: cover; object-position: 50% 0%; filter: grayscale(1); mask-image: linear-gradient(90deg,transparent,black 14%,black 84%,transparent); z-index: -2; }
-.hero::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg,#e4e3e0 0%,#e4e3e0 33%,#e4e3e0a6 40%,#e4e3e000 49%,#e4e3e000 71%,#e4e3e0a6 79%,#e4e3e0 87%); }
+.hero { position: relative; height: calc(399 * var(--u)); isolation: isolate; overflow: hidden; background: #ebe6df; }
+/* Soft ivory fades frame the supplied portrait in its natural colours. */
+.hero-background { position: absolute; inset: 0 auto 0 35%; width: 44%; max-width: none; height: 100%; object-fit: cover; object-position: 50% 48%; mask-image: linear-gradient(90deg,transparent,black 14%,black 84%,transparent); z-index: -2; }
+.hero::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg,#ebe6df 0%,#ebe6df 33%,#ebe6dfa6 40%,#ebe6df00 49%,#ebe6df00 71%,#ebe6dfa6 79%,#ebe6df 87%); }
 .hero-copy { position: absolute; left: calc(81 * var(--u)); top: calc(65 * var(--u)); }
 .hero-eyebrow { font-size: calc(9 * var(--u)); line-height: 1.7; letter-spacing: calc(3.1 * var(--u)); color: #41413e; }
 .hero h1 { margin-top: calc(18 * var(--u)); font-size: calc(79 * var(--u)); line-height: .795; letter-spacing: calc(-5.1 * var(--u)); color: #070705; }
@@ -257,8 +257,8 @@ dialog::backdrop { background: #141310bb; backdrop-filter: blur(7px); }
   .main-nav a, .main-nav > button { font-size: 16px; text-align: left; padding: 12px 0; }
   .main-nav a::after, .main-nav > button::after { right: auto; width: 25px; }
   .hero { height: 710px; }
-  .hero-background { width: min(100%, 560px); left: 50%; translate: -50% 0; object-position: 50% 0%; height: 550px; mask-image: linear-gradient(90deg,transparent,black 5%,black 95%,transparent); }
-  .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg,#e4e3e0 0%,#e4e3e0 29%,#e4e3e0f2 40%,#e4e3e080 51%,#e4e3e000 67%); }
+  .hero-background { width: min(100%, 500px); left: 50%; translate: -50% 0; object-position: 65% 35%; height: 440px; mask-image: linear-gradient(90deg,transparent,black 14%,black 88%,transparent); }
+  .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg,#ebe6df 0%,#ebe6df 32%,#ebe6dff5 39%,#ebe6df80 46%,#ebe6df00 57%); }
   .hero-copy { left: 34px; top: auto; bottom: 40px; width: calc(100% - 68px); }
   .hero-eyebrow { font-size: 9px; line-height: 1.7; letter-spacing: 2.6px; }
   .hero h1 { font-size: 78px; line-height: .84; letter-spacing: -4px; margin-top: 18px; }
@@ -350,7 +350,7 @@ dialog::backdrop { background: #141310bb; backdrop-filter: blur(7px); }
   .header-tools { gap: 4px; }
   .main-nav { top: 66px; }
   .hero { height: 690px; }
-  .hero-background { height: 530px; mask-image: none; }
+  .hero-background { height: 440px; mask-image: none; }
   .hero-copy { left: 26px; width: calc(100% - 52px); bottom: 30px; }
   .hero h1 { font-size: 72px; letter-spacing: -4px; }
   .hero-disciplines { display: none; }
