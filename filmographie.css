@@ -269,6 +269,9 @@ html[lang="ar"] .screen-intro, html[lang="ar"] .screen-hero-aside blockquote { d
   .screen-reel-button { text-align: left; letter-spacing: .5px; }
   .screen-play { flex-shrink: 0; }
 }
+@media (max-width: 360px) {
+  .spotlight-copy h2 { font-size: 24px; }
+}
 
 /* Complete credit shelves keep the horizontal poster browsing pattern. */
 .screen-shelf-track { display: grid; grid-auto-flow: column; grid-auto-columns: 23%; gap: calc(10 * var(--u)); overflow-x: auto; padding: 2px 1px 12px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: #72675a #161817; }
